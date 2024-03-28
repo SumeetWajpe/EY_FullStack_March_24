@@ -4,8 +4,13 @@ const port = 3000;
 
 const productsRouter = require("./routes/products.route");
 
+// middlewares
 app.use(express.static("src/static")); // add express.static as a middleware
+app.use(express.json());
+
+// routes
 app.use("/products", productsRouter); // register the products router with the application
+
 // register an endpoint for GET verb with path as /
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World!</h1>");

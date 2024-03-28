@@ -1,22 +1,20 @@
 const express = require("express");
 const router = express.Router();
-
+let products = require("../models/products.model");
+// 5 products -> product-> id,title,price,rating,likes,imageUrl
 router.get("/", (req, res) => {
-  let products = [
-    { id: 1, title: "Laptop", price: 100000 },
-    { id: 2, title: "LED TV", price: 50000 },
-  ];
   res.json(products);
 });
-router.get("/products/:id", (req, res) => {
-  let products = [
-    { id: 1, title: "Laptop", price: 100000 },
-    { id: 2, title: "LED TV", price: 50000 },
-  ];
+router.get("/:id", (req, res) => {
   let id = +req.params.id; // read the parameter
   let theProduct = products.find(p => p.id == id);
-
   res.json(theProduct);
+});
+
+router.post("/new", (req, res) => {
+  const newProduct = req.body;
+  products.push(newProduct);
+  res.json({ msg: `${newProduct.title} added successfully !` });
 });
 
 module.exports = router;
