@@ -8,6 +8,9 @@ const productsRouter = require("./routes/products.route");
 app.use(express.static("src/static")); // add express.static as a middleware
 app.use(express.json());
 
+// view engine
+app.set("views", "src/views");
+app.set("view engine", "pug");
 // routes
 app.use("/products", productsRouter); // register the products router with the application
 

@@ -17,4 +17,9 @@ router.post("/new", (req, res) => {
   res.json({ msg: `${newProduct.title} added successfully !` });
 });
 
+router.get("/details/:id", (req, res) => {
+  // return the HTML
+  res.render("productdetails");
+});
+
 module.exports = router;

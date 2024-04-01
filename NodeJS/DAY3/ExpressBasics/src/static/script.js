@@ -16,7 +16,7 @@ async function LoadProducts() {
 
 function CreateProductCard(product) {
   let card = `<div class="col-md-3"><div class="card">
-  <img src=${product.imageUrl} class="card-img-top" alt=${product.title} width="200px" height="150px">
+ <a href="/products/details/${product.id}"> <img src=${product.imageUrl} class="card-img-top" alt=${product.title} width="200px" height="150px"></a>
   <div class="card-body">
     <h5 class="card-title">${product.title}</h5>
     <p class="card-text">₹. ${product.price}</p>
