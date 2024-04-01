@@ -21,7 +21,7 @@ function CreateProductCard(product) {
     <h5 class="card-title">${product.title}</h5>
     <p class="card-text">₹. ${product.price}</p>
     <p class="card-text"> ${product.rating}</p>
-    <button class="btn btn-primary"> ${product.likes}</button>
+    <button class="btn btn-primary"> ${product.likes} <i class="fa-solid fa-thumbs-up"></i></button>
   </div>
 </div>
 </div>
