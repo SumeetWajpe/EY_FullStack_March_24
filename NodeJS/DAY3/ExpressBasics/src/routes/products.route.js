@@ -19,7 +19,7 @@ router.post("/new", (req, res) => {
 
 router.get("/details/:id", (req, res) => {
   // return the HTML
-  res.render("productdetails");
+  res.render("productdetails", { title: "Emitted with Pug !(dynamic)" });
 });
 
 module.exports = router;
