@@ -18,8 +18,9 @@ router.post("/new", (req, res) => {
 });
 
 router.get("/details/:id", (req, res) => {
-  // return the HTML
-  res.render("productdetails", { title: "Emitted with Pug !(dynamic)" });
+  let id = +req.params.id; // read the parameter
+  let theProduct = products.find(p => p.id == id);
+  res.render("productdetails", { theProduct });
 });
 
 module.exports = router;
