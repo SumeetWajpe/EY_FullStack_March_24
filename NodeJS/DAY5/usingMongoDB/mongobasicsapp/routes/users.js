@@ -11,4 +11,13 @@ router.get("/", async function (req, res) {
   } catch (error) {}
 });
 
+router.post("/new", async (req, res) => {
+  try {
+    let newUser = req.body;
+    let userToBeInserted = new User({ ...newUser });
+    let result = await userToBeInserted.save();
+    res.json({ result });
+  } catch (error) {}
+});
+
 module.exports = router;
