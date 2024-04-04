@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const cors = require("cors");
 
 let products = require("../models/products.model");
 // 5 products -> product-> id,title,price,rating,likes,imageUrl
-router.get("/", (req, res) => {
+// route level cors enabled
+router.get("/", cors(), (req, res) => {
   res.json(products);
 });
 router.get("/:id", (req, res) => {
