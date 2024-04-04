@@ -9,7 +9,7 @@ const productsRouter = require("./routes/products.route");
 // middlewares
 app.use(express.static("src/static")); // add express.static as a middleware
 app.use(express.json());
-//app.use(cors()); // enables CORS for all endpoints in the app
+app.use(cors()); // enables CORS for all endpoints in the app (use with caution)
 
 // view engine
 app.set("views", "src/views");
