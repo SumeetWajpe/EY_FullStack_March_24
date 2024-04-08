@@ -1,7 +1,8 @@
+import Hello from "@/components/Hello";
 import React from "react";
 
 function Sample() {
-  return <div>Hello World with Next !</div>;
+  return <Hello />;
 }
 
 export default Sample;
