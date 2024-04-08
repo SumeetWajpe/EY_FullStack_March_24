@@ -6,7 +6,7 @@ const port = 3000;
 
 const productsRouter = require("./routes/products.route");
 const authRouter = require("./routes/auth.route");
-
+require("dotenv").config();
 // middlewares
 app.use(express.static("src/static")); // add express.static as a middleware
 app.use(express.json());
