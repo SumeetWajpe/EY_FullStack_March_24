@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 function isAuthenticated(req, res, next) {
   try {
     if (req.headers.authorization) {
@@ -7,7 +7,8 @@ function isAuthenticated(req, res, next) {
       jwt.verify(token, process.env.JWT_SECRET_KEY, (err, decodedToken) => {
         if (!err) {
           console.log(decodedToken);
-          next();
+          req.user = decodedToken.user;
+          next(); // execute next thing in the request pipeline !
         } else if (err) {
           return res.status(401).send("Invalid Token");
         }
