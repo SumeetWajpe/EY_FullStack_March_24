@@ -5,6 +5,7 @@ const app = express(); // app represents the application
 const port = 3000;
 
 const productsRouter = require("./routes/products.route");
+const authRouter = require("./routes/auth.route");
 
 // middlewares
 app.use(express.static("src/static")); // add express.static as a middleware
@@ -16,7 +17,7 @@ app.set("views", "src/views");
 app.set("view engine", "pug");
 // routes
 app.use("/products", productsRouter); // register the products router with the application
-
+app.use("/signin", authRouter);
 // register an endpoint for GET verb with path as /
 app.get("/", (req, res) => {
   //   res.send("<h1>Hello World!</h1>");
