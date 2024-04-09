@@ -1,5 +1,5 @@
 import React from "react";
-
+import Link from "next/link";
 async function getPostsData() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   // The return value is *not* serialized
@@ -18,9 +18,11 @@ async function Posts() {
   return (
     <div>
       <h1>All Posts</h1>
-      <ul>
+      <ul className="list-group">
         {posts.map(post => (
-          <li key={post.id}>{post.title}</li>
+          <li key={post.id} className="list-group-item">
+            <Link href={"/postdetails/" + post.id}>{post.title}</Link>
+          </li>
         ))}
       </ul>
     </div>
