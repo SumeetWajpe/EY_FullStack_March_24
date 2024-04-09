@@ -8,7 +8,7 @@ let products = require("../models/products.model");
 const { isAuthenticated } = require("../middleware/auth.middleware");
 // 5 products -> product-> id,title,price,rating,likes,imageUrl
 // route level cors enabled
-router.get("/", isAuthenticated, cors(), (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.user);
   res.json(products);
 });

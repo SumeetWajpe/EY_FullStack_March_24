@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express(); // app represents the application
-const port = 3000;
+const port = 3100;
 
 const productsRouter = require("./routes/products.route");
 const authRouter = require("./routes/auth.route");
