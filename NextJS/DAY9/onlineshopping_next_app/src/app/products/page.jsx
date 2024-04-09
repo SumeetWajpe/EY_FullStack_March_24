@@ -1,3 +1,4 @@
+import Product from "@/components/product.component";
 import React from "react";
 async function getProductsData() {
   const res = await fetch("http://localhost:3100/products");
@@ -14,7 +15,13 @@ async function getProductsData() {
 
 async function ListOfProducts() {
   const products = await getProductsData();
-  return <div>{products.length}</div>;
+  return (
+    <div className="row">
+      {products.map(p => (
+        <Product productdetails={p} key={p.id} />
+      ))}
+    </div>
+  );
 }
 
 export default ListOfProducts;
