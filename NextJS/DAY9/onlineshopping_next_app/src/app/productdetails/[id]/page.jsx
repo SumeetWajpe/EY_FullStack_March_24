@@ -1,6 +1,7 @@
 import React from "react";
 import { notFound } from "next/navigation";
 async function getProduct(id) {
+  await new Promise(r => setTimeout(r, 2000));
   const res = await fetch("http://localhost:3100/products/" + id);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -18,7 +19,8 @@ async function ProductDetails(props) {
     theProduct = await getProduct(props.params.id);
   } catch (error) {
     if (!theProduct?.product) {
-      notFound();
+      // notFound();
+      return <h1 className="text-danger"> Could not find the product !</h1>;
     }
   }
   return (
