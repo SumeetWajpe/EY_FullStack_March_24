@@ -13,7 +13,9 @@ async function getProduct(id) {
   return res.json();
 }
 
-async function EditPage(props) {
+async function EditProductPage(props) {
+  // Option - 1
+  // 1. Create Server Action
   let theProduct;
   try {
     theProduct = await getProduct(props.params.id);
@@ -26,9 +28,10 @@ async function EditPage(props) {
   return (
     <div>
       Editing Product with Id - {theProduct.id} with title {theProduct.title}
+      {/* 2. Pass Server action as a prop to Client Component */}
       <EditProductForm theProduct={theProduct} />
     </div>
   );
 }
 
-export default EditPage;
+export default EditProductPage;
