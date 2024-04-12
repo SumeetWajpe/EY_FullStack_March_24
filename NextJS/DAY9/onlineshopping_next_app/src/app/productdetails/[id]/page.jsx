@@ -1,5 +1,5 @@
 import React from "react";
-
+import { notFound } from "next/navigation";
 async function getProduct(id) {
   const res = await fetch("http://localhost:3100/products/" + id);
   // The return value is *not* serialized
@@ -13,7 +13,14 @@ async function getProduct(id) {
 }
 
 async function ProductDetails(props) {
-  let theProduct = await getProduct(props.params.id);
+  let theProduct;
+  try {
+    theProduct = await getProduct(props.params.id);
+  } catch (error) {
+    if (!theProduct?.product) {
+      notFound();
+    }
+  }
   return (
     <div className="row">
       <div className="col-md-9">

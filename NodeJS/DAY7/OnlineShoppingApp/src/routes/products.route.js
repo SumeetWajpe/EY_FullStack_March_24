@@ -15,7 +15,11 @@ router.get("/", (req, res) => {
 router.get("/:id", (req, res) => {
   let id = +req.params.id; // read the parameter
   let theProduct = products.find(p => p.id == id);
-  res.json(theProduct);
+  if (theProduct) {
+    res.json(theProduct);
+  } else {
+    res.json({ product: null });
+  }
 });
 
 router.post("/new", (req, res) => {
