@@ -1,7 +1,9 @@
 import Product from "@/components/product.component";
 import React from "react";
 async function getProductsData() {
-  const res = await fetch("http://localhost:3100/products");
+  const res = await fetch("http://localhost:3100/products", {
+    next: { revalidate: 0 },
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 

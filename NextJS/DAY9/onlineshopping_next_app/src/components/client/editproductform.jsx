@@ -11,7 +11,7 @@ function EditProductForm({ theProduct }) {
         onSubmit={e => {
           e.preventDefault();
           // console.log(editedProduct);
-          EditProductOnServer();
+          EditProductOnServer(editedProduct);
         }}
       >
         <div className="col-md-4">
