@@ -31,7 +31,14 @@ function NewProductForm_ReactHookForm() {
           </div>
           <div className="row">
             <label htmlFor="txtProductTitle">Title :</label>
-            <input type="text" id="txtProductTitle" {...register("title")} />
+            <input
+              type="text"
+              id="txtProductTitle"
+              {...register("title", {
+                required: true,
+                maxLength: { value: 20 },
+              })}
+            />
           </div>
 
           <div className="row">
