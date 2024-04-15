@@ -3,18 +3,31 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 function NewProductForm_ReactHookForm() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ mode: "onChange" });
   return (
     <div>
       <form
         onSubmit={handleSubmit(formData => {
           console.log(formData);
+          // POST (server action)
         })}
       >
         <div className="col-md-4">
           <div className="row">
             <label htmlFor="txtProductId">Id :</label>
-            <input type="number" id="txtProductId" {...register("id")} />
+            <input
+              type="number"
+              id="txtProductId"
+              {...register("id", { required: true })}
+            />
+
+            {errors.id && (
+              <p className="text-danger">The Product Id is required !</p>
+            )}
           </div>
           <div className="row">
             <label htmlFor="txtProductTitle">Title :</label>
