@@ -63,4 +63,13 @@ router.delete("/delete", (req, res) => {
   res.json({ msg: "Deleted successfully !", status: true });
 });
 
+router.put("/edit/:id", (req, res) => {
+  let editedProduct = req.body;
+  console.log("Edited Product : ", editedProduct);
+  let index = products.findIndex(p => p.id == +req.params.id);
+  products[index] = editedProduct;
+  console.log(products[index]);
+  res.json({ msg: "Product edited successfully !" });
+});
+
 module.exports = router;

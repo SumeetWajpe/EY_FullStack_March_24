@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { EditProductOnServer } from "@/actions";
+import { redirect } from "next/navigation";
 function EditProductForm({ theProduct }) {
   let [editedProduct, setEditedProduct] = useState({ ...theProduct });
 

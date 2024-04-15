@@ -1,8 +1,14 @@
 import Product from "@/components/product.component";
 import React from "react";
+
+// time based - purged
+// export const revalidate = 10;
+
+export const dynamic = "force-dynamic";
+
 async function getProductsData() {
   const res = await fetch("http://localhost:3100/products", {
-    next: { revalidate: 0 },
+    // next: { revalidate: 0 },
   });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.

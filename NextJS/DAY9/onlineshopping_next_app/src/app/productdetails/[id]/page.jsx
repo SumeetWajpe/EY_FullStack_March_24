@@ -46,4 +46,19 @@ async function ProductDetails(props) {
   );
 }
 
+export async function generateStaticParams() {
+  const res = await fetch("http://localhost:3100/products", {});
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  const products = await res.json();
+  return products.map(p => {
+    return {
+      id: p.id.toString(),
+    };
+  });
+}
 export default ProductDetails;
