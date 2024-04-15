@@ -17,3 +17,19 @@ export async function EditProductOnServer(theProduct) {
   revalidatePath("/products");
   redirect("/products");
 }
+
+export async function addNewProduct(formState, formData) {
+  const id = formData.get("pid");
+  const title = formData.get("ptitle");
+  const price = formData.get("pprice");
+  const likes = formData.get("plikes");
+  const rating = formData.get("prating");
+  const imageUrl = formData.get("pimageurl");
+
+  if (typeof title !== "string" || title.length < 3) {
+    return {
+      message: "Title must be greater than 3 characters !",
+    };
+  }
+  // add new product with fetch POST & redirect to /products
+}

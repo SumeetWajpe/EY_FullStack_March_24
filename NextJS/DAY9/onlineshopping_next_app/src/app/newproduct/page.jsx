@@ -24,12 +24,12 @@
 //     // Define a server action
 //     "use server";
 //     // Get User Input
-//     const id = formData.get("pid");
-//     const title = formData.get("ptitle");
-//     const price = formData.get("pprice");
-//     const likes = formData.get("plikes");
-//     const rating = formData.get("prating");
-//     const imageUrl = formData.get("pimageurl");
+// const id = formData.get("pid");
+// const title = formData.get("ptitle");
+// const price = formData.get("pprice");
+// const likes = formData.get("plikes");
+// const rating = formData.get("prating");
+// const imageUrl = formData.get("pimageurl");
 
 //     let newProduct = { id, title, price, likes, rating, imageUrl };
 
@@ -53,22 +53,22 @@
 //             <label htmlFor="txtProductTitle">Title :</label>
 //             <input type="text" id="txtProductTitle" name="ptitle" />
 //           </div>
-          // <div className="row">
-          //   <label htmlFor="txtProductPrice">Price :</label>
-          //   <input type="number" id="txtProductPrice" name="pprice" />
-          // </div>
-          // <div className="row">
-          //   <label htmlFor="txtProductRating">Rating :</label>
-          //   <input type="number" id="txtProductRating" name="prating" />
-          // </div>
-          // <div className="row">
-          //   <label htmlFor="txtProductLikes">Likes :</label>
-          //   <input type="number" id="txtProductLikes" name="plikes" />
-          // </div>
-          // <div className="row">
-          //   <label htmlFor="txtProductImageUrl">Image Url :</label>
-          //   <input type="text" id="txtProductImageUrl" name="pimageurl" />
-          // </div>
+// <div className="row">
+//   <label htmlFor="txtProductPrice">Price :</label>
+//   <input type="number" id="txtProductPrice" name="pprice" />
+// </div>
+// <div className="row">
+//   <label htmlFor="txtProductRating">Rating :</label>
+//   <input type="number" id="txtProductRating" name="prating" />
+// </div>
+// <div className="row">
+//   <label htmlFor="txtProductLikes">Likes :</label>
+//   <input type="number" id="txtProductLikes" name="plikes" />
+// </div>
+// <div className="row">
+//   <label htmlFor="txtProductImageUrl">Image Url :</label>
+//   <input type="text" id="txtProductImageUrl" name="pimageurl" />
+// </div>
 //         </div>
 //         <button className="btn btn-success">Add New Product</button>
 //       </form>
@@ -78,16 +78,67 @@
 
 // export default NewProduct;
 
+// using React Hook Form
 
-import NewProductForm_ReactHookForm from '@/components/client/newproductform'
-import React from 'react'
+// import NewProductForm_ReactHookForm from '@/components/client/newproductform'
+// import React from 'react'
 
-function NewProductUsingReactHookForm() {
+// function NewProductUsingReactHookForm() {
+//   return (
+//     <div>
+//       <NewProductForm_ReactHookForm />
+//     </div>
+//   )
+// }
+
+// export default NewProductUsingReactHookForm
+
+"use client";
+
+import { useFormState } from "react-dom";
+import * as actions from "../../actions/index";
+function NewProduct_UseFormStateHook() {
+  const [formState, action] = useFormState(actions.addNewProduct, {
+    message: "",
+  });
+
   return (
     <div>
-      <NewProductForm_ReactHookForm />
+      <form action={action}>
+        <div className="col-md-4">
+          {formState?.message ? (
+            <p className="text-danger">{formState?.message}</p>
+          ) : null}
+          <div className="row">
+            <label htmlFor="txtProductId">Id :</label>
+            <input type="number" id="txtProductId" name="pid" />
+          </div>
+          <div className="row">
+            <label htmlFor="txtProductTitle">Title :</label>
+            <input type="text" id="txtProductTitle" name="ptitle" />
+          </div>
+          <div className="row">
+            <label htmlFor="txtProductPrice">Price :</label>
+            <input type="number" id="txtProductPrice" name="pprice" />
+          </div>
+          <div className="row">
+            <label htmlFor="txtProductRating">Rating :</label>
+            <input type="number" id="txtProductRating" name="prating" />
+          </div>
+          <div className="row">
+            <label htmlFor="txtProductLikes">Likes :</label>
+            <input type="number" id="txtProductLikes" name="plikes" />
+          </div>
+          <div className="row">
+            <label htmlFor="txtProductImageUrl">Image Url :</label>
+            <input type="text" id="txtProductImageUrl" name="pimageurl" />
+          </div>
+        </div>
+
+        <button className="btn btn-success">Add New Product</button>
+      </form>
     </div>
-  )
+  );
 }
 
-export default NewProductUsingReactHookForm
+export default NewProduct_UseFormStateHook;
