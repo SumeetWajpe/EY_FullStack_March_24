@@ -1,5 +1,4 @@
 import NextAuth from "next-auth";
-import credentials from "next-auth/providers/credentials";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const {
