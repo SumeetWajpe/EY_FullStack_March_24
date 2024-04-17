@@ -1,5 +1,7 @@
 import Product from "@/components/product.component";
 import React from "react";
+import { auth } from "../auth";
+import { redirect } from "next/navigation";
 
 // time based - purged
 // export const revalidate = 10;
@@ -22,6 +24,12 @@ async function getProductsData() {
 }
 
 async function ListOfProducts() {
+  const session = await auth();
+
+  // better to implement nested route as protected route
+  if (!session) {
+    redirect("/api/auth/signin");
+  }
   const products = await getProductsData();
   return (
     <div className="row">

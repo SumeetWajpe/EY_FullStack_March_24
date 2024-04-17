@@ -12,9 +12,8 @@ export default async function Home() {
   return (
     <main>
       <h2>Protected Resource !</h2>
-      <Link className="btn btn-outline-primary" href="/api/auth/signout">
-        Logout
-      </Link>
+
+      {/* {session.user.email ? <h5>Email : {session.user.email}</h5> : null} */}
     </main>
   );
 }

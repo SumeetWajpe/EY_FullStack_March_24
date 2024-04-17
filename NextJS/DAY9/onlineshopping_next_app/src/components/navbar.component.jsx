@@ -1,5 +1,8 @@
+import { auth } from "@/app/auth";
 import Link from "next/link";
-function Navbar() {
+async function Navbar() {
+  const session = await auth();
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -36,6 +39,10 @@ function Navbar() {
             </li>
           </ul>
         </div>
+        Hello {session?.user?.name} !
+        <Link className="btn btn-outline-primary" href="/api/auth/signout">
+          Logout
+        </Link>
       </div>
     </nav>
   );
